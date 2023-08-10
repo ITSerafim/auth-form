@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 
 class TokenService {
-  public static token(payload: string, expiresTime = '24h'): string {
+  public static token(payload: object, expiresTime = '24h'): string {
     return jwt.sign(payload, process.env.SECRET_KEY as string, {
       expiresIn: expiresTime,
     });
