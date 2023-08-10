@@ -10,5 +10,5 @@ export default db.define<UserSchema>(
     password: { type: DataTypes.STRING, allowNull: false },
     name: { type: DataTypes.STRING },
   },
-  { tableName: 'users' }
+  { tableName: 'users', timestamps: false }
 );

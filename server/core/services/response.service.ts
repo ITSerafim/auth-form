@@ -1,3 +1,4 @@
+import { BaseResponse } from '../responses';
 import { ResponseWithData } from '../responses/with-data.response.';
 
 export class ResponseService<T> {
@@ -20,7 +21,10 @@ export class ResponseService<T> {
     };
   }
 
-  protected error(message: string): Error {
-    throw new Error(message);
+  protected error(message: string, statusCode: number): BaseResponse {
+    return {
+      message,
+      statusCode,
+    };
   }
 }

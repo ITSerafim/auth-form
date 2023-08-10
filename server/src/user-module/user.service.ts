@@ -12,16 +12,8 @@ class UserService extends ResponseService<UserSchema> {
     this.repository = new UserRepository();
   }
 
-  public async getUserByEmail(
-    email: string
-  ): Promise<ResponseWithData<UserSchema> | Error> {
-    const user = await this.repository.oneByEmail(email);
-
-    if (!user) {
-      return this.error('User not found');
-    }
-
-    return this.resData(user);
+  public async getUserByEmail(email: string): Promise<UserSchema | null> {
+    return await this.repository.oneByEmail(email);
   }
 
   public async addUser(payload: any): Promise<BaseResponse> {
