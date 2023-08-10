@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <main>
+      <img src="images/picture.png" alt="main picture" class="image" />
+      <section class="form-layout">
+        <section class="form-section">
+          <div>
+            <h3 class="form-title_sub">Welcome back</h3>
+            <h2 class="form-title">Login to your account</h2>
+          </div>
+          <form class="login-form">
+            <div class="form-control form_control_vertic">
+              <label class="control-label" for="email">Email</label>
+              <input class="control-type" type="text" id="email" required />
+            </div>
+            <div class="form-control form_control_vertic">
+              <label class="control-label" for="password">Password</label>
+              <input class="control-type" type="password" id="password" required />
+            </div>
+            <section class="forgot-section">
+              <div class="form-control form_control_horize">
+                <input style="cursor: pointer;" id="radioBtn" type="radio" />
+                <label class="control-label control-label_radio" for="radioBtn">Remeber me</label>
+              </div>
+              <a class="a-link" href="#">Forgot password ?</a>
+            </section>
+            <div class="btns">
+              <button class="btn login" type="submit" id="submit">Login now</button>
+              <button class="btn google-sign"><span class="text-with-icon"><img src="images/google.svg" alt="google-icon">Or sign-in with google</span></button>
+            </div>
+          </form>
+        </section>
+        <!-- <p class="test">Join free today</p> -->
+        <div class="register">Don`t have an account ? <a class="a-link" href="register.html">Join free today</a></div>
+      </section>
+    </main>
+    <script src="scripts/api.js" type="module"></script>
+    <script src="scripts/login.js" type="module"></script>
+  </body>
+</html>
