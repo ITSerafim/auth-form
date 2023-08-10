@@ -9,7 +9,12 @@
     "build": "tsc",
     "start": "nodemon build/index.js",
     "server:start": "concurrently \" npm run build \" \"npm run start\"",
-    "server:watch": "nodemon --watch \"**\" --ext \"ts,json\" --ignore \"**/*.spec.ts\" --exec \"ts-node index.ts\""
+    "server:watch": "nodemon --watch \"**\" --ext \"ts,json\" --ignore \"**/*.spec.ts\" --exec \"ts-node index.ts\"",
+    "migration": "npx sequelize-cli db:migrate",
+    "migration:add": "npx sequelize-cli migration:create --name $MIG_NAME",
+    "migration:gen": "npx sequelize-cli migration:generate --name $MIG_NAME",
+    "migration:back": "npx sequelize-cli db:migrate:undo",
+    "migration:allback": "npx sequelize-cli db:migrate:undo:all"
   },
   "keywords": [],
   "author": "",
