@@ -1,7 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap");
 
-@import "adaptive.css";
-
 *,
 *::after,
 *::before {
@@ -19,6 +17,7 @@ body {
 main {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  position: relative;
 }
 
 .form-layout {
@@ -146,4 +145,24 @@ main {
 
 .a-link:hover {
   color: #3a7ef1;
+}
+
+.notification {
+  position: absolute;
+  top: 25px;
+  right: 50px;
+  padding: 1rem 2.5rem;
+  border-radius: 5px;
+  color: #fff;
+  transition: 1s;
+}
+
+.notification-success {
+  top: 70px;
+  background-color: #04c35c;
+}
+
+.notification-error{
+  top: 70px;
+  background-color: #ff0000;
 }

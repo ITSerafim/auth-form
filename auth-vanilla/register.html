@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Регистрация</title>
     <link rel="stylesheet" href="styles/main.css" />
   </head>
   <body>
@@ -12,27 +12,37 @@
       <section class="form-layout">
         <section class="form-section">
           <div>
-            <h3 class="form-title_sub">Welcome</h3>
-            <h2 class="form-title">Registration new account</h2>
+            <h3 class="form-title_sub">Добро пожаловать!</h3>
+            <h2 class="form-title">Регистрация нового аккаунта</h2>
           </div>
           <form class="login-form">
             <div class="form-control form_control_vertic">
-              <label class="control-label" for="email">Email</label>
-              <input class="control-type" type="text" id="email" required />
+              <label class="control-label" for="name">Имя</label>
+              <input class="control-type" type="text" id="name" />
             </div>
             <div class="form-control form_control_vertic">
-              <label class="control-label" for="password">Password</label>
-              <input class="control-type" type="password" id="password" required />
+              <label class="control-label" for="email">Email</label>
+              <input class="control-type" type="text" id="email" />
+            </div>
+            <div class="form-control form_control_vertic">
+              <label class="control-label" for="password">Пароль</label>
+              <input class="control-type" type="password" id="password" />
             </div>
             <div class="btns">
-              <button class="btn login">Registration</button>
+              <button id="submit" type="submit" class="btn login">Зарегистрироваться</button>
             </div>
           </form>
         </section>
+
         <div class="register">
-         You are have an account ? <a class="a-link" href="index.html">Login now</a>
+          У вас уже есть аккаунт ?
+          <a class="a-link" href="index.html">Войдите</a>
         </div>
       </section>
+      <div id="notification" class="notification"></div>
+      <script src="scripts/api.js" type="module"></script>
+      <script src="scripts/notification.js" type="module"></script>
+      <script src="scripts/register.js" type="module"></script>
     </main>
   </body>
 </html>
