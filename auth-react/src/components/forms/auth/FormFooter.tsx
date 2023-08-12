@@ -1,5 +1,5 @@
-import React from "react";
-import Link from "../../core/link/Link";
+import React from 'react';
+import Link from '../../core/link/Link';
 
 function FormFooter() {
   return (

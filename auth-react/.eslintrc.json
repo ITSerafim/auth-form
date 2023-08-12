@@ -24,6 +24,7 @@
     "camelcase": "error",
     "spaced-comment": "error",
     "quotes": ["error", "single"],
+    "indent": ["error", 2],
     "no-duplicate-imports": "error",
     "@tanstack/query/exhaustive-deps": "error",
     "@tanstack/query/prefer-query-object-syntax": "error"

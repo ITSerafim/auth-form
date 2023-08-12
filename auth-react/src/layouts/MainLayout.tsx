@@ -1,5 +1,5 @@
-import React from "react";
-import AuthToast from "../components/toasts/AuthToast";
+import React from 'react';
+import AuthToast from '../components/toasts/AuthToast';
 
 interface MainLayoutProps {
   children: JSX.Element | JSX.Element[];

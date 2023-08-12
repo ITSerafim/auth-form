@@ -1,5 +1,5 @@
-import React from "react";
-import Input, { InputProps } from "../../ui/input/Input";
+import React from 'react';
+import Input, { InputProps } from '../../ui/input/Input';
 
 interface FormControlProps extends InputProps {
   controlStyle?: string;
