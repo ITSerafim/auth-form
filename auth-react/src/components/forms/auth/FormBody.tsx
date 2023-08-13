@@ -26,6 +26,7 @@ function FormBody({ login }: FormBodyProps) {
     };
 
     login(payload);
+    setUserData({ name: '', email: '', password: '' });
   };
 
   return (

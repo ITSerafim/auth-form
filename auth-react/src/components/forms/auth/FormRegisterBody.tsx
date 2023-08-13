@@ -25,6 +25,8 @@ function FormRegisterBody({ register }: FormRegisterBodyProps) {
     };
 
     register(payload);
+
+    setUserData({ name: '', email: '', password: '' });
   };
 
   return (

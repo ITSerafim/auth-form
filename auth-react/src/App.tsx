@@ -8,28 +8,65 @@ import { UserRequest } from './contracts/requests/user.request';
 import { AuthService } from './services/auth.service';
 import { useEdit } from './context/auth/actions/edit-form.action';
 import FormRegisterBody from './components/forms/auth/FormRegisterBody';
+import { useState } from 'react';
 
 function App() {
   const { isEdit, setEdit } = useEdit();
+  const [toastConfig, setToastConfig] = useState({
+    message: '',
+    extraClass: '',
+  });
 
   const authService = new AuthService();
+
+  const timeout = (message: string) =>
+    setTimeout(
+      () =>
+        setToastConfig({
+          message: message,
+          extraClass: '',
+        }),
+      1500,
+    );
+
+  const toast = (message: string, isError = false) => {
+    setToastConfig({
+      message: message,
+      extraClass: isError ? 'notification-error' : 'notification-success',
+    });
+
+    timeout(message);
+  };
 
   const login = useMutation({
     mutationFn: async (payload: UserRequest) =>
       await authService.login(payload),
-    onSuccess: ({ data }) => {
+    onSuccess: ({ data, message, statusCode }) => {
       if (data) {
         localStorage.setItem('token', data);
       }
+
+      if (statusCode === 200 || statusCode === 201) {
+        toast('Аутентификация успешно пройдена');
+      } else {
+        toast(message, true);
+      }
+
     },
   });
 
   const register = useMutation({
     mutationFn: async (payload: UserRequest) =>
       await authService.register(payload),
-    onSuccess: ({ data }) => {
+    onSuccess: ({ data, statusCode, message }) => {
       if (data) {
         localStorage.setItem('token', data);
+      }
+
+      if (statusCode === 200 || statusCode === 201) {
+        toast('Пользователь успешно зарегистрирован!');
+      } else {
+        toast(message, true);
       }
     },
   });
@@ -40,7 +77,7 @@ function App() {
   const changeForm = (value: boolean) => setEdit(value);
 
   return (
-    <MainLayout>
+    <MainLayout toastConfig={toastConfig}>
       <FormLayout>
         <FormHeader isEdit={isEdit} />
         {isEdit ? (

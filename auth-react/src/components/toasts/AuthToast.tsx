@@ -1,7 +1,12 @@
 import React from 'react';
 
-function AuthToast() {
-  return <div className="notification notification"></div>;
+interface AuthToastProps {
+  message: string;
+  extraClass?: string;
+}
+
+function AuthToast({ message, extraClass }: AuthToastProps) {
+  return <div className={`notification ${extraClass}`}>{message}</div>;
 }
 
 export default AuthToast;
