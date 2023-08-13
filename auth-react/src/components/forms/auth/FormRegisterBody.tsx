@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
+import { User } from '../../../contracts/models/User';
+import { ButtonEvent } from '../../../types/ui/button';
+import { InputEvent } from '../../../types/ui/input';
 import FormControl from '../../core/form/FormControl';
 import Button from '../../ui/button/Button';
-import Link from '../../core/link/Link';
-import { User } from '../../../contracts/models/User';
-import { InputEvent } from '../../../types/ui/input';
-import { ButtonEvent } from '../../../types/ui/button';
 import { UserRequest } from '../../../contracts/requests/user.request';
 
-interface FormBodyProps {
-  login: (payload: UserRequest) => void;
+interface FormRegisterBodyProps {
+  register: (payload: UserRequest) => void;
 }
 
-function FormBody({ login }: FormBodyProps) {
+function FormRegisterBody({ register }: FormRegisterBodyProps) {
   const [userData, setUserData] = useState<User>({
     name: '',
     email: '',
@@ -25,11 +24,23 @@ function FormBody({ login }: FormBodyProps) {
       ...userData,
     };
 
-    login(payload);
+    register(payload);
   };
 
   return (
     <form className='login-form'>
+      <FormControl
+        styleClass='control-type'
+        controlStyle='form_control_vertic'
+        withLabel={true}
+        labelText='Имя'
+        labelStyleClass='control-label'
+        value={userData.name}
+        onChange={(event: InputEvent) =>
+          setUserData({ ...userData, name: event.target.value })
+        }
+      />
+
       <FormControl
         styleClass='control-type'
         controlStyle='form_control_vertic'
@@ -55,35 +66,14 @@ function FormBody({ login }: FormBodyProps) {
         }
       />
 
-      <section className='forgot-section'>
-        <FormControl
-          styleClass='control-type'
-          controlStyle='form_control_horize'
-          withLabel={true}
-          labelText='Запомнить меня'
-          type='radio'
-          labelStyleClass='control-label'
-          labelStyleExtra='control-label_radio'
-        />
-        <Link styles='a-link' href='#' text='Забыли пароль ?' />
-      </section>
-      <div className='btns'>
-        <Button
-          styleClasses='btn login'
-          text='Войти'
-          type='submit'
-          onClick={submit}
-        />
-        <Button
-          styleClasses='btn google-sign text-with-icon'
-          text='Войти с помощью Google'
-          type='submit'
-        >
-          <img src='google.svg' alt='google-icon' />
-        </Button>
-      </div>
+      <Button
+        styleClasses='btn login'
+        text='Зарегистрироваться'
+        type='submit'
+        onClick={submit}
+      />
     </form>
   );
 }
 
-export default FormBody;
+export default FormRegisterBody;
